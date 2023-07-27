@@ -1,0 +1,19 @@
+.idea
+__pycache__/
+.DS_Store
+.coverage
+coverage.xml
+test-output.xml
+junit
+.venv
+.venvs
+
+# IDE - VSCode
+.vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.env
+env/local.env
