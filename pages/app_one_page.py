@@ -81,6 +81,7 @@ functions = [
                     "description": "Payment Frequency - 'Monthly', 'SemiAnnual', 'Quarterly', 'Annual', 'Weekly','Fortnightly'",
                 },                  
             },
+            "required": ["financedAmount","apr","contractTerms","rentalMode","rentalFrequency"],
         }
     }
 ]
@@ -107,8 +108,8 @@ def call_post_endpoint_with_api_key(url, data):
 
 
 def get_rental_amount(request):
-    payload = { "requestParam": { "apr": request.get("apr"), "contractTerms": request.get("contractTerms"), "rentalMode": request.get("rentalMode"), "rentalFrequency": request.get("rentalFrequency"), "financedAmount": request.get("financedAmount")}}
-    
+    payload = { "requestParam": { "apr": request.get("apr"), "contractTerms": request.get('contractTerms'), "rentalMode": ""+request.get('rentalMode')+"", "rentalFrequency": ""+request.get("rentalFrequency")+"", "financedAmount": request.get("financedAmount")}}
+    # payload = { "requestParam": { "apr": 4, "contractTerms": 24, "rentalMode": "Arrear", "rentalFrequency": "Monthly", "financedAmount": 320012}}
     response_data = call_post_endpoint_with_api_key('https://dev-api.netsolapp.io/marketplace/calculate/RentalAmountAnnuity', payload)
     
     return response_data
